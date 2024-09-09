@@ -1,0 +1,11 @@
+server:
+  port: 7072
+
+spring:
+  application:
+    name: RAIL-EMPLOYEE
+  datasource:
+    url: jdbc:mysql://localhost:3306/microservice
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: pr0f1nch@1234
