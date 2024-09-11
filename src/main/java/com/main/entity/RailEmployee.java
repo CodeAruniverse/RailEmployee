@@ -29,6 +29,6 @@ public class RailEmployee {
 	private Timestamp trainDuration;
 	
 	@Transient
-	private ArrayList<Rail> rail = new ArrayList<Rail>();
+	private Rail rail;
 
 }

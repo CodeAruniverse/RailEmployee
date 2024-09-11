@@ -9,6 +9,6 @@ import com.main.entity.Rail;
 @FeignClient(name="RAIL")
 public interface RailService {
 	
-	@GetMapping("/{railId}")
+	@GetMapping("/rail-service/{railId}")
 	Rail getRailById(@PathVariable String railId);
 }

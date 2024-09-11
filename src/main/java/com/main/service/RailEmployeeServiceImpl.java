@@ -7,7 +7,9 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.main.entity.Rail;
 import com.main.entity.RailEmployee;
+import com.main.external.RailService;
 import com.main.repo.RailEmployeeRepo;
 
 @Service
@@ -15,6 +17,9 @@ public class RailEmployeeServiceImpl implements RailEmployeeService {
 	
 	@Autowired
 	private RailEmployeeRepo railEmployeeRepo;
+	
+	@Autowired
+	private RailService railService;
 
 	@Override
 	public RailEmployee saveEmployee(RailEmployee re) {
@@ -36,7 +41,13 @@ public class RailEmployeeServiceImpl implements RailEmployeeService {
 
 	@Override
 	public List<RailEmployee> getAllEmployee() {
-		return this.railEmployeeRepo.findAll();
+		List<RailEmployee> getAllEmp = this.railEmployeeRepo.findAll();
+		for( RailEmployee re : getAllEmp) {
+			String trainId = re.getTrainId();
+			Rail railDetails = this.railService.getRailById(trainId);
+			re.setRail(railDetails);
+		}
+		return getAllEmp;
 	}
 
 	@Override
